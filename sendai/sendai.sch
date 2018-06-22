@@ -158,43 +158,36 @@
 </deviceset>
 </devicesets>
 </library>
-<library name="RESISTOR">
+<library name="LEAD_SWITCH">
 <packages>
-<package name="RESISTOR">
-<pad name="1" x="-5.08" y="0" drill="0.85" diameter="2.5"/>
-<pad name="2" x="5.08" y="0" drill="0.85" diameter="2.5"/>
-<wire x1="-1.651" y1="0" x2="-1.016" y2="1.143" width="0.127" layer="21"/>
-<wire x1="-1.016" y1="1.143" x2="-0.381" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="-0.381" y1="-1.27" x2="0.381" y2="1.143" width="0.127" layer="21"/>
-<wire x1="0.381" y1="1.143" x2="0.889" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="0.889" y1="-1.27" x2="1.524" y2="0" width="0.127" layer="21"/>
+<package name="LEAD_SWITCH">
+<pad name="P$3" x="-6" y="0" drill="0.8" diameter="2.2" shape="offset" rot="R180"/>
+<pad name="P$4" x="6" y="0" drill="0.8" diameter="2.2" shape="offset"/>
+<wire x1="-5.08" y1="1.27" x2="5.08" y2="1.27" width="0.2" layer="21"/>
+<wire x1="5.08" y1="1.27" x2="5.08" y2="-1.27" width="0.2" layer="21"/>
+<wire x1="5.08" y1="-1.27" x2="-5.08" y2="-1.27" width="0.2" layer="21"/>
+<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="1.27" width="0.2" layer="21"/>
 </package>
 </packages>
 <symbols>
-<symbol name="RESISTOR">
-<pin name="1" x="-10.16" y="0" length="middle"/>
-<pin name="2" x="10.16" y="0" length="middle" rot="R180"/>
-<wire x1="-4.572" y1="0" x2="-3.302" y2="2.54" width="0.2032" layer="94"/>
-<wire x1="-3.302" y1="2.54" x2="-2.032" y2="-2.54" width="0.2" layer="94"/>
-<wire x1="-2.032" y1="-2.54" x2="-0.762" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="-0.762" y1="2.54" x2="0.508" y2="-2.54" width="0.2032" layer="94"/>
-<wire x1="0.508" y1="-2.54" x2="1.778" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="1.778" y1="2.54" x2="3.048" y2="-2.54" width="0.2" layer="94"/>
-<wire x1="3.048" y1="-2.54" x2="4.318" y2="0" width="0.2" layer="94"/>
-<wire x1="-5.08" y1="0" x2="-4.572" y2="0" width="0.1524" layer="94"/>
-<wire x1="4.318" y1="0" x2="5.08" y2="0" width="0.1524" layer="94"/>
+<symbol name="LEAD_SWITCH">
+<pin name="P$1" x="7.62" y="0" visible="pad" length="middle" rot="R180"/>
+<pin name="P$2" x="-7.62" y="0" visible="off" length="middle"/>
+<wire x1="-2.54" y1="0" x2="2.54" y2="2.54" width="0.254" layer="94"/>
+<circle x="-2.54" y="0" radius="0.567959375" width="0.254" layer="94"/>
+<circle x="2.54" y="0" radius="0.567959375" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="RESISTOR">
+<deviceset name="LEAD_SWITCH">
 <gates>
-<gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
+<gate name="G$1" symbol="LEAD_SWITCH" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="RESISTOR">
+<device name="" package="LEAD_SWITCH">
 <connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="P$1" pad="P$3"/>
+<connect gate="G$1" pin="P$2" pad="P$4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -217,7 +210,7 @@
 <part name="U$1" library="CR2032" deviceset="CR2032" device=""/>
 <part name="U$2" library="CONNECTER" deviceset="CON2" device=""/>
 <part name="U$3" library="CONNECTER" deviceset="CON2" device=""/>
-<part name="U$4" library="RESISTOR" deviceset="RESISTOR" device=""/>
+<part name="U$4" library="LEAD_SWITCH" deviceset="LEAD_SWITCH" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -227,7 +220,7 @@
 <instance part="U$1" gate="G$1" x="25.4" y="40.64"/>
 <instance part="U$2" gate="G$1" x="45.72" y="40.64" rot="R270"/>
 <instance part="U$3" gate="G$1" x="71.12" y="40.64" rot="R270"/>
-<instance part="U$4" gate="G$1" x="35.56" y="66.04" rot="R180"/>
+<instance part="U$4" gate="G$1" x="35.56" y="66.04"/>
 </instances>
 <busses>
 </busses>
@@ -239,9 +232,10 @@
 <wire x1="71.12" y1="53.34" x2="71.12" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="P$1"/>
 <wire x1="45.72" y1="43.18" x2="45.72" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="1"/>
 <wire x1="45.72" y1="66.04" x2="45.72" y2="53.34" width="0.1524" layer="91"/>
 <junction x="45.72" y="53.34"/>
+<pinref part="U$4" gate="G$1" pin="P$1"/>
+<wire x1="43.18" y1="66.04" x2="45.72" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -260,8 +254,9 @@
 <net name="N$3" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="+"/>
-<pinref part="U$4" gate="G$1" pin="2"/>
 <wire x1="25.4" y1="48.26" x2="25.4" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="U$4" gate="G$1" pin="P$2"/>
+<wire x1="27.94" y1="66.04" x2="25.4" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
